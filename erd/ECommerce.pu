@@ -1,0 +1,105 @@
+@startuml ECommerce
+
+entity Customer {
+  + CustomerID : int
+  --
+  Name : String
+  Email : String
+  PhoneNumber : String
+  Address : String
+  Gender : String
+  Username : String
+  Password : String
+  CartID : int
+}
+
+entity Agency {
+  + AgencyID : int
+  --
+  Name : String
+  Email : String
+  PhoneNumber : String
+  Address : String
+  Gender : String
+  Username : String
+  Password : String
+  ProductID : int
+}
+
+entity Admin {
+  + AdminID : int
+  --
+  Name : String
+  Email : String
+  Username : String
+  Password : String
+}
+
+entity Cart {
+  + CartID : int
+  --
+  CustomerID : int
+  CreatedAt : Date
+  UpdatedAt : Date
+}
+
+entity CartItem {
+  + CartItemID : int
+  --
+  CartID : int
+  ProductID : int
+  Quantity : int
+}
+
+entity Product {
+  + ProductID : int
+  --
+  AgencyID : int
+  Name : String
+  Description : String
+  Price : Decimal
+  StockQuantity : int
+}
+
+entity Transaction {
+  + TransactionID : int
+  --
+  CustomerID : int
+  AgencyID : int
+  TransactionDate : Date
+  Status : String
+}
+
+entity TransactionItem {
+  + TransactionItemID : int
+  --
+  TransactionID : int
+  ProductID : int
+  Quantity : int
+}
+
+entity Billing {
+  + BillingID : int
+  --
+  TransactionID : int  
+  Amount : Decimal
+  BillingDate : Date
+  PaymentStatus : String
+}
+
+Customer ||--|| Cart 
+Cart ||--o{ CartItem 
+Product ||--o{ CartItem
+
+Customer ||--o{ Transaction 
+Agency ||--o{ Transaction 
+
+Agency ||--o{ Product 
+Admin ||--o{ Agency 
+
+Transaction ||--o{ TransactionItem
+Product ||--o{ TransactionItem
+
+Transaction ||--o{ Billing 
+
+@enduml

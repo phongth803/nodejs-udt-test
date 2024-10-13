@@ -1,0 +1,22 @@
+@startuml login.pu
+actor Customer
+participant Browser
+participant APIServer as "API Server"
+participant Database
+participant JWTService as "JWT Service"
+title Customer Login Sequence Diagram
+
+Customer -> Browser: Request Login
+Browser -> APIServer: Send credentials (username/password)
+APIServer -> Database: Verify credentials in Database
+Database -> APIServer: Return verification result
+
+alt Credentials valid
+    APIServer -> JWTService: Create JWT token
+    JWTService -> APIServer: Return JWT token
+    APIServer -> Browser: Send JWT token (encrypted) to Browser
+else Credentials invalid
+    APIServer -> Browser: Return error message (Invalid credentials)
+end
+
+@enduml
