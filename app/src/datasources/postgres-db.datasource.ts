@@ -4,11 +4,14 @@ import {juggler} from '@loopback/repository';
 const config = {
   name: 'PostgresDB',
   connector: 'postgresql',
-  host: 'postgres_db',
+  host: 'postgresdb.c9gkoegkiabb.ap-southeast-2.rds.amazonaws.com',
   port: 5432,
   user: 'phong',
-  password: '123456',
-  database: 'ecommerce',
+  password: '12345678',
+  database: 'postgres',
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
 
 // Observe application's life cycle to disconnect the datasource when

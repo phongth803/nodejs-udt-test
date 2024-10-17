@@ -19,7 +19,7 @@ if (require.main === module) {
     // Run the application
     const config = {
         rest: {
-            port: +((_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3000),
+            port: +((_a = process.env.PORT) !== null && _a !== void 0 ? _a : 8081),
             host: process.env.HOST || '127.0.0.1',
             // The `gracePeriodForClose` provides a graceful close for http/https
             // servers with keep-alive clients. The default value is `Infinity`

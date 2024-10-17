@@ -5,12 +5,14 @@ export declare class PostgresDbDataSource extends juggler.DataSource implements 
     static readonly defaultConfig: {
         name: string;
         connector: string;
-        url: string;
         host: string;
         port: number;
         user: string;
         password: string;
         database: string;
+        ssl: {
+            rejectUnauthorized: boolean;
+        };
     };
     constructor(dsConfig?: object);
 }
